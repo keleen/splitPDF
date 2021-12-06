@@ -27,5 +27,5 @@ python3 -m venv venv
 
 ### 打包
 ```shell
-pyinstaller -F index.py --name splitPDF -i assets/image/icon.ico
+pyinstaller -F index.py --name 分割PDF -i assets/image/m10.ico -w
 ```

@@ -1,6 +1,8 @@
 import PySimpleGUI as sg
 from PyPDF2 import PdfFileReader, PdfFileWriter
 import os
+from sys import exit, platform
+import subprocess
 
 def pdf_splitter(file_path, start, end):
     file_name = os.path.splitext(os.path.basename(file_path))[0]
@@ -16,6 +18,15 @@ def pdf_splitter(file_path, start, end):
     with open(out_put_filename, 'wb') as out:
         pdf_writer.write(out)
         sg.popup_notify('分割成功', out_put_filename)
+        # if platform == 'win32':
+        #     win_out_put_filename = out_put_filename.replace('/', '\\')
+        #     cmd = 'Explorer /select,"{}"'.format(win_out_put_filename)
+        #     print(win_out_put_filename)
+        #     print(out_put_filename)
+        #     print(cmd)
+        #     subprocess.Popen(cmd)
+        # else:
+        os.startfile(dir_name)
 
 def start():
     layout = [
@@ -58,9 +69,6 @@ def start():
             exit(0)
         elif event in (sg.WIN_CLOSED, 'Exit'):
             exit(0)
-
-    window.close()
-
 
 if __name__ == '__main__':
     start()

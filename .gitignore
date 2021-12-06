@@ -1,3 +1,5 @@
 venv
 build
 .idea
+__pycache__
+dist
